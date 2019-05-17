@@ -1,0 +1,36 @@
+server:
+  port: 10010
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka/
+
+zuul:
+  prefix: /api                    # 添加路由前缀
+  routes:
+    item-service: /item/**       # item开头的一切
+    upload-service:              # 文件上传路径
+        path: /upload/**
+        serviceId: upload-service
+        strip-prefix: false     # http://api.leyou.com/api/upload/image
+
+# 配置Zuul内置的hystrix的超时时长
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisencond: 5000
+
+# 配置Zuul内置的ribbon的超时时长
+ribbon:
+  ConnectTimeout: 1000             # ribbon连接超时时长    如果1000毫秒没有获取到连接，就抛出异常；
+  ReadTimeout: 2000                # ribbon读取超时时长    建立了连接，超过2秒没读取到数据，也会抛出异常
+  MaxAutoRetries: 0               # 当前服务重试次数。 0就是不做重试，因为重试可能导致一些问题。例如新增重试的话会新增两次
+  maxAutoRetriesNextServer: 0    # 切换服务重试次数

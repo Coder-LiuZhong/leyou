@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: item-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver    #数据库驱动可以省略，有智能推断，看到你下面是连的mysql就自己判断是什么驱动了
+    url: jdbc:mysql://127.0.0.1:3306/leyou
+    username: root
+    password: root
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka/
+  instance:                         # 这个设置保证我们拿到的一定是ip，而不是hostlocal
+    prefer-ip-address: true       # 防止别人拿到主机名
+    ip-address: 127.0.0.1
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl       # 输出语句，system.out;  有Slf4jImpl可以用slf4j的日志去帮忙打印。
+
+# 日志控制
+#     日志级别设置为debug
+#     level属性接收Map值，可以控制更精细，到包名设置debug级别
+#     还可以设置spring的日志级别。  重启打印很多日志信息
+logging:
+  # level: debug
+  level:
+    cn.itcast: debug
+    org.springframework: debug
+
+# mybatis配置
+#     别名扫描包
+#     mybatis驼峰配置，有了通用mapper这里就不需要配置了,启动类上加通用mapper的注解即可
+#     mapper.xml文件位置，有了通用mapper这里就不需要配置了
+#     mapper接口扫描，yml里没有，去启动类加注解@MapperScan("cn.itcast.mapper")
+#mybatis:
+#  type-aliases-package: cn.itcast.pojo
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: mapper/*.xml
