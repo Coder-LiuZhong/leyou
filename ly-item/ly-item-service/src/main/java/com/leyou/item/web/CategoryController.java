@@ -5,10 +5,7 @@ import com.leyou.item.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +26,33 @@ public class CategoryController {
         return ResponseEntity.ok( categoryService.queryCategoryListByPid(pid) );     // 简写
     }
 
+    /**
+     * 保存
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> saveCategory(Category category){
+        categoryService.saveCategory(category);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /**
+     * 删除
+     * @return
+     */
+    @DeleteMapping("cid/{cid}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable("cid") Long id){
+        this.categoryService.deleteCategory(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    /**
+     * 更新
+     * @return
+     */
+    @PutMapping
+    public ResponseEntity<Void> updateCategory(Category category){
+        categoryService.updateCategory(category);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
 }
