@@ -24,4 +24,12 @@ public interface CategoryMapper extends Mapper<Category>, IdListMapper<Category,
      */
     @Select("SELECT * FROM `tb_category` WHERE id = (SELECT MAX(id) FROM tb_category)")
     List<Category> selectLast();
+
+    /**
+     * 根据品牌id查询商品分类
+     * @param bid
+     * @return
+     */
+    @Select("SELECT * FROM tb_category WHERE id IN (SELECT category_id FROM tb_category_brand WHERE brand_id = #{bid})")
+    List<Category> queryByBrandId(@Param("bid") Long bid);
 }

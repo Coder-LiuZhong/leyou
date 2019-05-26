@@ -55,4 +55,14 @@ public class CategoryController {
         categoryService.updateCategory(category);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
+
+    /**
+     * 用于修改品牌信息时，商品分类信息的回显
+     * @param bid
+     * @return
+     */
+    @GetMapping("bid/{bid}")
+    public ResponseEntity<List<Category>> queryByBrandId(@PathVariable("bid") Long bid){
+        return ResponseEntity.ok(categoryService.queryByBrandId(bid));
+    }
 }

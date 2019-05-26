@@ -18,10 +18,13 @@ public class CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
+    /**
+     * 根据父节点ID查询商品分类
+     * @param pid
+     */
     public List<Category> queryCategoryListByPid(Long pid) {
-
         if(-1==pid){
-            List<Category> last =this.categoryMapper.selectLast();
+            List<Category> last =this.categoryMapper.selectLast();      // 前台传过来-1 就代表是要最后插入的那条数据。
             return last;
         }
 
@@ -133,5 +136,14 @@ public class CategoryService {
             throw new LyException(ExceptionEnum.CATEGORY_NOT_FOND);
         }
         return list;
+    }
+
+    /**
+     * 根据品牌id查询分类
+     * @param bid
+     * @return
+     */
+    public List<Category> queryByBrandId(Long bid) {
+        return this.categoryMapper.queryByBrandId(bid);
     }
 }

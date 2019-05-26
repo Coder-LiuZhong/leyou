@@ -11,11 +11,11 @@ import javax.persistence.Table;
 public class Brand {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private Long id;
+    private Long id;            // KeySql主键策略，useGeneratedKeys = true 主键自增之后可以使用到主键
 
     private String name;        // 品牌名称
 
     private String image;       // 品牌图片
 
-    private String letter;
+    private String letter;      // 品牌的首字母
 }
