@@ -26,7 +26,7 @@ import java.util.List;
 public class UploadService {
 
     // 允许上传的文件类型；  先写在此，后续可搞到yml配置文件里； 数组工具类，可以接收可变参数 String... a
-    private static final List<String> ALLOW_TYPES = Arrays.asList("image/jpeg","image/png","image/bmp");
+    private static final List<String> ALLOW_TYPES = Arrays.asList("image/jpeg","image/png","image/bmp");        // 字符数组转化为list
 
     /**
      * 上传图片到本地
@@ -55,6 +55,8 @@ public class UploadService {
 
             // 2.返回一个路径
             return "http://image.leyou.com/" + file.getOriginalFilename();
+
+            // 图片有一个另外的地址：  因为图片不能保存在服务器内部，会对服务器产生额外的加载负担；  一般静态资源都应该采用独立域名，这样访问静态资源时不会携带一些不必要的cookie，减少请求的数据量
 
         } catch (IOException e) {       // 上传失败要去记录日志，所以这里不抛
             log.error("上传文件失败!", e);

@@ -21,7 +21,7 @@ fdfs:
   so-timeout: 2500              # 请求超时时间
   connect-timeout: 600         # 连接超时时间
   thumb-image:                  # 形成缩略图的大小。   上传的图片高清无码，页面展示的时候太大会消耗流量。cdn服务器还是按流量付钱的。而且显示速度也会过慢。所以压缩，体积小，加载速度快
-    width: 60
+    width: 60                    # 生程缩略图返回后的地址后面会接上：http://image.leyou.com/group1/M00/00/00/wKgZglzqCeOAfNzOAAhMks70gY4059_60X60.png
     height: 60
   tracker-list:                 # tracker地址
     - 192.168.25.130:22122

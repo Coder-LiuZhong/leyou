@@ -16,10 +16,12 @@ public class UploadController {
     @Autowired
     private UploadService uploadService;
 
-
     /**
      * 图片上传
-     * http://api.leyou.com/api/upload/image
+     *      http://api.leyou.com/api/upload/image
+     *      图片上传肯定是POST
+     *      请求参数文件file被SpringMVC封装为了一个接口来接收：MultipartFile
+     *      上传后返回文件的url路径
      * */
     @PostMapping("image")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file ){
