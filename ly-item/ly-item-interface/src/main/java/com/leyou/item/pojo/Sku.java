@@ -28,5 +28,5 @@ public class Sku {
     private Date lastUpdateTime;// 最后修改时间
 
     @Transient      // 加上就说明这个字段跟数据库没什么关系
-    private Integer stock;// 库存
+    private Integer stock;      // 库存，前台传过来的json里面有这个字段，所以得加一个才能接收到。
 }

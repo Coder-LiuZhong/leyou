@@ -79,7 +79,8 @@ public class BrandController {
     }
 
     /**
-     * 根据分类查询品牌
+     * 根据商品分类ID查询品牌
+     *      新增商品页面，选择商品分类后，对应的品牌下拉框需要显示
      * @param cid
      * @return
      */
@@ -89,7 +90,7 @@ public class BrandController {
     }
 
     /**
-     * 根据id查询品牌
+     * 根据ID查询品牌
      * @param id
      * @return
      */
@@ -99,7 +100,7 @@ public class BrandController {
     }
 
     /**
-     * 根据id列表查询品牌列表
+     * 根据ID列表查询品牌列表
      * @param ids
      * @return
      */

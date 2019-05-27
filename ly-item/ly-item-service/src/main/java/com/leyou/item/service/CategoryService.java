@@ -20,7 +20,6 @@ public class CategoryService {
 
     /**
      * 根据父节点ID查询商品分类
-     * @param pid
      */
     public List<Category> queryCategoryListByPid(Long pid) {
         if(-1==pid){
@@ -38,7 +37,9 @@ public class CategoryService {
         return list;
     }
 
-
+    /**
+     * 保存商品分类
+     */
     public void saveCategory(Category category) {
         /**
          * 将本节点插入到数据库中
@@ -53,7 +54,9 @@ public class CategoryService {
         // updateByPrimaryKeySelective会对字段进行判断再更新(如果为Null就忽略更新)，如果你只想更新某一字段，可以用这个方法。
     }
 
-
+    /**
+     * 删除商品分类
+     */
     public void deleteCategory(Long id) {
         Category category = categoryMapper.selectByPrimaryKey(id);
         if(category.getIsParent()){
@@ -90,7 +93,7 @@ public class CategoryService {
         }
     }
 
-    /**
+    /*
      * 查询本节点下所包含的所有叶子节点，用于维护tb_category_brand中间表
      * @param category
      * @param leafNode
@@ -108,7 +111,7 @@ public class CategoryService {
         }
     }
 
-    /**
+    /*
      * 查询本节点下所有子节点
      * @param category
      * @param node
@@ -124,12 +127,16 @@ public class CategoryService {
         }
     }
 
-
+    /**
+     * 更新商品分类
+     */
     public void updateCategory(Category category) {
         this.categoryMapper.updateByPrimaryKeySelective(category);
     }
 
-
+    /**
+     * 根据IDS查询商品分类
+     */
     public List<Category> queryByIds(List<Long> ids) {
         final List<Category> list = categoryMapper.selectByIdList(ids);
         if (CollectionUtils.isEmpty(list)) {
@@ -139,9 +146,7 @@ public class CategoryService {
     }
 
     /**
-     * 根据品牌id查询分类
-     * @param bid
-     * @return
+     * 根据品牌ID查询商品分类信息
      */
     public List<Category> queryByBrandId(Long bid) {
         return this.categoryMapper.queryByBrandId(bid);

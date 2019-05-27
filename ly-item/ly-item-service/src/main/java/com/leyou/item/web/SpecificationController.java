@@ -17,7 +17,7 @@ public class SpecificationController {
     private SpecificationService specificationService;
 
     /**
-     * 根据分类id查询规格组
+     * 根据商品分类ID查询商品规格组
      * @param cid
      * @return
      */
@@ -27,7 +27,10 @@ public class SpecificationController {
     }
 
     /**
-     * 查询参数集合
+     * 根据条件查询商品规格组内的商品子规格
+     *      商品规格里从一条组信息进入子信息会用到，只传组ID
+     *      商品新增选中商品分类之后会自动调用，参数不一样,只传商品分类ID
+     *      searching为以后做准备
      * @param gid 组id
      * @param cid 分类id
      * @param searching 是否搜索

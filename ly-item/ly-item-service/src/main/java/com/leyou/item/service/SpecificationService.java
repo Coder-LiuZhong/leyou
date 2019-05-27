@@ -23,12 +23,15 @@ public class SpecificationService {
     @Autowired
     private SpecParamMapper specParamMapper;
 
+    /**
+     * 根据商品分类ID查询商品规格组
+     */
     public List<SpecGroup> queryGroupByCid(Long cid) {
         //查询条件
         SpecGroup specGroup = new SpecGroup();
         specGroup.setCid(cid);
         //开始查询
-        List<SpecGroup> list = specGroupMapper.select(specGroup);
+        List<SpecGroup> list = specGroupMapper.select(specGroup);       // 非空字段作为条件查询
         //判断
         if(CollectionUtils.isEmpty(list)){
             throw new LyException(ExceptionEnum.SPEC_GROUP_NOT_FOUND);      //没查到
@@ -36,6 +39,12 @@ public class SpecificationService {
         return list;
     }
 
+    /**
+     * 根据条件查询商品规格组内的商品子规格
+     * @param gid 组id
+     * @param cid 商品分类id
+     * @param searching 是否搜索
+     */
     public List<SpecParam> queryParamList(Long gid, Long cid, Boolean searching) {
         //查询条件
         SpecParam specParam = new SpecParam();
@@ -43,7 +52,7 @@ public class SpecificationService {
         specParam.setCid(cid);
         specParam.setSearching(searching);
         //开始查询
-        List<SpecParam> list = specParamMapper.select(specParam);
+        List<SpecParam> list = specParamMapper.select(specParam);       // 根据specParam的非空字段去查询
         //判断
         if(CollectionUtils.isEmpty(list)){
             throw new LyException(ExceptionEnum.SPEC_PARAM_NOT_FOUND);      //没查到

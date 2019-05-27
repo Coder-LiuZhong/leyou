@@ -57,7 +57,8 @@ public class CategoryController {
     }
 
     /**
-     * 用于修改品牌信息时，商品分类信息的回显
+     * 根据品牌ID查询商品分类信息
+     *      用于修改品牌页面，品牌对应的商品分类信息回显
      * @param bid
      * @return
      */
