@@ -91,6 +91,7 @@ public class BrandController {
 
     /**
      * 根据ID查询品牌
+     *      全文搜索用到  http://localhost:8081/brand/1
      * @param id
      * @return
      */
@@ -100,7 +101,7 @@ public class BrandController {
     }
 
     /**
-     * 根据ID列表查询品牌列表
+     * 根据IDs列表查询品牌列表
      * @param ids
      * @return
      */

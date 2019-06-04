@@ -1,0 +1,35 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: search-service
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.25.130:9300
+  jackson:
+    default-property-inclusion: non_null          # 搜索后返回给页面，字段是null的就不返回
+#  rabbitmq:
+#    virtual-host: /leyou
+#    host: 192.168.17.128
+#    username: leyou
+#    password: leyou
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true     #当你获取host时，返回的不是主机名，而是ip
+    ip-address: 127.0.0.1
+    lease-expiration-duration-in-seconds: 10  #10秒不发送就过期
+    lease-renewal-interval-in-seconds: 5      #每隔5秒发一次心跳
+
+#ribbon:
+#  ReadTimeout: 60000
+#  ConnectTimeout: 60000
+
+

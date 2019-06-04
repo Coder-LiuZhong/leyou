@@ -55,10 +55,10 @@ public class GoodsController {
     }
 
     /**
-     * 根据SPU查询下面所有的SKU
+     * 根据SPUID查询下面所有的SKU
      */
     @GetMapping("/sku/list")
-    public ResponseEntity<List<Sku>> querySkuList(@RequestParam("id")Long id){
+    public ResponseEntity<List<Sku>> querySkusBySpuId(@RequestParam("id")Long id){
         return ResponseEntity.ok(goodsService.querySkusBySpuId(id));
     }
 

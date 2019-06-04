@@ -184,7 +184,7 @@ public class GoodsService {
     }
 
     /**
-     * 根据SPU查询下面所有的SKU
+     * 根据SPUID查询下面所有的SKU
      */
     public List<Sku> querySkusBySpuId(Long id) {
         // 查询SKU
